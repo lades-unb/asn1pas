@@ -1,0 +1,952 @@
+ASN_MODULE_SOURCES=	\
+	LPA.c	\
+	LpaVersion.c	\
+	PolicyInfos.c	\
+	PolicyInfo.c	\
+	OtherSigningCertificate.c	\
+	OtherCertID.c	\
+	OtherHash.c	\
+	OtherHashValue.c	\
+	OtherHashAlgAndValue.c	\
+	SignaturePolicyId.c	\
+	SigPolicyId.c	\
+	SigPolicyHash.c	\
+	SigPolicyQualifierInfo.c	\
+	SigPolicyQualifierId.c	\
+	SPuri.c	\
+	SPUserNotice.c	\
+	CommitmentTypeIndication.c	\
+	CommitmentTypeIdentifier.c	\
+	CommitmentTypeQualifier.c	\
+	SignerLocation.c	\
+	PostalAddress.c	\
+	SignerAttribute.c	\
+	ClaimedAttributes.c	\
+	CertifiedAttributes.c	\
+	ContentTimestamp.c	\
+	SignatureTimeStampToken.c	\
+	CompleteCertificateRefs.c	\
+	CompleteRevocationRefs.c	\
+	CrlOcspRef.c	\
+	CRLListID.c	\
+	CrlValidatedID.c	\
+	CrlIdentifier.c	\
+	OcspListID.c	\
+	OcspResponsesID.c	\
+	OcspIdentifier.c	\
+	OtherRevRefs.c	\
+	OtherRevRefType.c	\
+	CertificateValues.c	\
+	RevocationValues.c	\
+	OtherRevVals.c	\
+	OtherRevValType.c	\
+	ESCTimeStampToken.c	\
+	TimestampedCertsCRLs.c	\
+	ArchiveTimeStampToken.c	\
+	Attribute.c	\
+	AttributeType.c	\
+	AttributeValue.c	\
+	AttributeTypeAndValue.c	\
+	X520name.c	\
+	X520CommonName.c	\
+	X520LocalityName.c	\
+	X520StateOrProvinceName.c	\
+	X520OrganizationName.c	\
+	X520OrganizationalUnitName.c	\
+	X520Title.c	\
+	X520dnQualifier.c	\
+	X520countryName.c	\
+	X520SerialNumber.c	\
+	X520Pseudonym.c	\
+	DomainComponent.c	\
+	EmailAddress.c	\
+	Name.c	\
+	RDNSequence.c	\
+	DistinguishedName.c	\
+	RelativeDistinguishedName.c	\
+	DirectoryString.c	\
+	Certificate.c	\
+	TBSCertificate.c	\
+	Version.c	\
+	CertificateSerialNumber.c	\
+	Validity.c	\
+	Time.c	\
+	UniqueIdentifier.c	\
+	SubjectPublicKeyInfo.c	\
+	Extensions.c	\
+	Extension.c	\
+	CertificateList.c	\
+	TBSCertList.c	\
+	AlgorithmIdentifier.c	\
+	ORAddress.c	\
+	BuiltInStandardAttributes.c	\
+	CountryName.c	\
+	AdministrationDomainName.c	\
+	NetworkAddress.c	\
+	X121Address.c	\
+	TerminalIdentifier.c	\
+	PrivateDomainName.c	\
+	OrganizationName.c	\
+	NumericUserIdentifier.c	\
+	PersonalName.c	\
+	OrganizationalUnitNames.c	\
+	OrganizationalUnitName.c	\
+	BuiltInDomainDefinedAttributes.c	\
+	BuiltInDomainDefinedAttribute.c	\
+	ExtensionAttributes.c	\
+	ExtensionAttribute.c	\
+	CommonName.c	\
+	TeletexCommonName.c	\
+	TeletexOrganizationName.c	\
+	TeletexPersonalName.c	\
+	TeletexOrganizationalUnitNames.c	\
+	TeletexOrganizationalUnitName.c	\
+	PDSName.c	\
+	PhysicalDeliveryCountryName.c	\
+	PostalCode.c	\
+	PhysicalDeliveryOfficeName.c	\
+	PhysicalDeliveryOfficeNumber.c	\
+	ExtensionORAddressComponents.c	\
+	PhysicalDeliveryPersonalName.c	\
+	PhysicalDeliveryOrganizationName.c	\
+	ExtensionPhysicalDeliveryAddressComponents.c	\
+	UnformattedPostalAddress.c	\
+	StreetAddress.c	\
+	PostOfficeBoxAddress.c	\
+	PosteRestanteAddress.c	\
+	UniquePostalName.c	\
+	LocalPostalAttributes.c	\
+	PDSParameter.c	\
+	ExtendedNetworkAddress.c	\
+	PresentationAddress.c	\
+	TerminalType.c	\
+	TeletexDomainDefinedAttributes.c	\
+	TeletexDomainDefinedAttribute.c	\
+	SignaturePolicy.c	\
+	SignPolicyHash.c	\
+	SignPolicyInfo.c	\
+	PolicyIssuerName.c	\
+	FieldOfApplication.c	\
+	SignatureValidationPolicy.c	\
+	SigningPeriod.c	\
+	CommonRules.c	\
+	CommitmentRules.c	\
+	CommitmentRule.c	\
+	SelectedCommitmentTypes.c	\
+	CommitmentType.c	\
+	SignerAndVerifierRules.c	\
+	SignerRules.c	\
+	CMSAttrs.c	\
+	CertRefReq.c	\
+	CertInfoReq.c	\
+	VerifierRules.c	\
+	MandatedUnsignedAttr.c	\
+	CertificateTrustTrees.c	\
+	CertificateTrustPoint.c	\
+	PathLenConstraint.c	\
+	AcceptablePolicySet.c	\
+	CertRevReq.c	\
+	RevReq.c	\
+	EnuRevReq.c	\
+	SigningCertTrustCondition.c	\
+	TimestampTrustCondition.c	\
+	DeltaTime.c	\
+	AttributeTrustCondition.c	\
+	HowCertAttribute.c	\
+	AttributeConstraints.c	\
+	AttributeTypeConstraints.c	\
+	AttributeValueConstraints.c	\
+	AlgorithmConstraintSet.c	\
+	AlgorithmConstraints.c	\
+	AlgAndLength.c	\
+	SignPolExtensions.c	\
+	SignPolExtn.c	\
+	TimeStampReq.c	\
+	MessageImprint.c	\
+	TSAPolicyId.c	\
+	TimeStampResp.c	\
+	TimeStampToken.c	\
+	TSTInfo.c	\
+	Accuracy.c	\
+	AuthorityKeyIdentifier.c	\
+	KeyIdentifier.c	\
+	SubjectKeyIdentifier.c	\
+	KeyUsage.c	\
+	PrivateKeyUsagePeriod.c	\
+	CertificatePolicies.c	\
+	PolicyInformation.c	\
+	CertPolicyId.c	\
+	PolicyQualifierInfo.c	\
+	PolicyQualifierId.c	\
+	CPSuri.c	\
+	UserNotice.c	\
+	NoticeReference.c	\
+	DisplayText.c	\
+	PolicyMappings.c	\
+	SubjectAltName.c	\
+	GeneralNames.c	\
+	GeneralName.c	\
+	AnotherName.c	\
+	EDIPartyName.c	\
+	IssuerAltName.c	\
+	SubjectDirectoryAttributes.c	\
+	BasicConstraints.c	\
+	NameConstraints.c	\
+	GeneralSubtrees.c	\
+	GeneralSubtree.c	\
+	BaseDistance.c	\
+	PolicyConstraints.c	\
+	SkipCerts.c	\
+	CRLDistributionPoints.c	\
+	DistributionPoint.c	\
+	DistributionPointName.c	\
+	ReasonFlags.c	\
+	ExtKeyUsageSyntax.c	\
+	KeyPurposeId.c	\
+	InhibitAnyPolicy.c	\
+	FreshestCRL.c	\
+	AuthorityInfoAccessSyntax.c	\
+	AccessDescription.c	\
+	SubjectInfoAccessSyntax.c	\
+	CRLNumber.c	\
+	IssuingDistributionPoint.c	\
+	BaseCRLNumber.c	\
+	CRLReason.c	\
+	CertificateIssuer.c	\
+	HoldInstructionCode.c	\
+	InvalidityDate.c	\
+	ContentInfo.c	\
+	ContentType.c	\
+	SignedData.c	\
+	DigestAlgorithmIdentifiers.c	\
+	SignerInfos.c	\
+	EncapsulatedContentInfo.c	\
+	SignerInfo.c	\
+	SignerIdentifier.c	\
+	SignedAttributes.c	\
+	UnsignedAttributes.c	\
+	CMSAttribute.c	\
+	CMSAttributeValue.c	\
+	SignatureValue.c	\
+	EnvelopedData.c	\
+	OriginatorInfo.c	\
+	RecipientInfos.c	\
+	EncryptedContentInfo.c	\
+	EncryptedContent.c	\
+	UnprotectedAttributes.c	\
+	RecipientInfo.c	\
+	EncryptedKey.c	\
+	KeyTransRecipientInfo.c	\
+	RecipientIdentifier.c	\
+	KeyAgreeRecipientInfo.c	\
+	OriginatorIdentifierOrKey.c	\
+	OriginatorPublicKey.c	\
+	RecipientEncryptedKeys.c	\
+	RecipientEncryptedKey.c	\
+	KeyAgreeRecipientIdentifier.c	\
+	RecipientKeyIdentifier.c	\
+	CMSSubjectKeyIdentifier.c	\
+	KEKRecipientInfo.c	\
+	KEKIdentifier.c	\
+	PasswordRecipientInfo.c	\
+	OtherRecipientInfo.c	\
+	DigestedData.c	\
+	Digest.c	\
+	EncryptedData.c	\
+	AuthenticatedData.c	\
+	AuthAttributes.c	\
+	UnauthAttributes.c	\
+	MessageAuthenticationCode.c	\
+	DigestAlgorithmIdentifier.c	\
+	SignatureAlgorithmIdentifier.c	\
+	KeyEncryptionAlgorithmIdentifier.c	\
+	ContentEncryptionAlgorithmIdentifier.c	\
+	MessageAuthenticationCodeAlgorithm.c	\
+	KeyDerivationAlgorithmIdentifier.c	\
+	RevocationInfoChoices.c	\
+	RevocationInfoChoice.c	\
+	OtherRevocationInfoFormat.c	\
+	CertificateChoices.c	\
+	AttributeCertificateV2.c	\
+	OtherCertificateFormat.c	\
+	CertificateSet.c	\
+	IssuerAndSerialNumber.c	\
+	CMSVersion.c	\
+	UserKeyingMaterial.c	\
+	OtherKeyAttribute.c	\
+	MessageDigest.c	\
+	SigningTime.c	\
+	CMSTime.c	\
+	Countersignature.c	\
+	ExtendedCertificateOrCertificate.c	\
+	ExtendedCertificate.c	\
+	ExtendedCertificateInfo.c	\
+	Signature.c	\
+	AttributeCertificateV1.c	\
+	AttributeCertificateInfoV1.c	\
+	AttCertVersionV1.c	\
+	AttributeCertificate.c	\
+	AttributeCertificateInfo.c	\
+	AttCertVersion.c	\
+	Holder.c	\
+	ObjectDigestInfo.c	\
+	AttCertIssuer.c	\
+	V2Form.c	\
+	IssuerSerial.c	\
+	AttCertValidityPeriod.c	\
+	Targets.c	\
+	Target.c	\
+	TargetCert.c	\
+	IetfAttrSyntax.c	\
+	SvceAuthInfo.c	\
+	RoleSyntax.c	\
+	Clearance.c	\
+	ClassList.c	\
+	SecurityCategory.c	\
+	AAControls.c	\
+	AttrSpec.c	\
+	ACClearAttrs.c	\
+	ProxyInfo.c	\
+	PKIMessage.c	\
+	PKIHeader.c	\
+	PKIFreeText.c	\
+	PKIBody.c	\
+	CertificationRequest.c	\
+	CertificationRequestInfo.c	\
+	Attributes.c	\
+	PKIProtection.c	\
+	ProtectedPart.c	\
+	PasswordBasedMac.c	\
+	PBMParameter.c	\
+	DHBasedMac.c	\
+	DHBMParameter.c	\
+	NestedMessageContent.c	\
+	PKIFailureInfo.c	\
+	PKIStatusInfo.c	\
+	PKIStatus.c	\
+	OOBCert.c	\
+	OOBCertHash.c	\
+	POPODecKeyChallContent.c	\
+	Challenge.c	\
+	POPODecKeyRespContent.c	\
+	CertRepMessage.c	\
+	CertResponse.c	\
+	CertifiedKeyPair.c	\
+	CertOrEncCert.c	\
+	KeyRecRepContent.c	\
+	RevReqContent.c	\
+	RevDetails.c	\
+	RevRepContent.c	\
+	CAKeyUpdAnnContent.c	\
+	CertAnnContent.c	\
+	RevAnnContent.c	\
+	CRLAnnContent.c	\
+	PKIConfirmContent.c	\
+	InfoTypeAndValue.c	\
+	GenMsgContent.c	\
+	GenRepContent.c	\
+	ErrorMsgContent.c	\
+	CertReqMessages.c	\
+	CertReqMsg.c	\
+	CertRequest.c	\
+	CertTemplate.c	\
+	OptionalValidity.c	\
+	Controls.c	\
+	ProofOfPossession.c	\
+	POPOSigningKey.c	\
+	POPOSigningKeyInput.c	\
+	PKMACValue.c	\
+	PKIXCRMF-PBMParameter.c	\
+	POPOPrivKey.c	\
+	SubsequentMessage.c	\
+	RegToken.c	\
+	Authenticator.c	\
+	PKIPublicationInfo.c	\
+	SinglePubInfo.c	\
+	PKIArchiveOptions.c	\
+	CRMF-EncryptedKey.c	\
+	EncryptedValue.c	\
+	KeyGenParameters.c	\
+	OldCertId.c	\
+	CertId.c	\
+	ProtocolEncrKey.c	\
+	UTF8Pairs.c	\
+	CertReq.c	\
+	ReceiptRequest.c	\
+	ContentIdentifier.c	\
+	ReceiptsFrom.c	\
+	AllOrFirstTier.c	\
+	Receipt.c	\
+	ESSVersion.c	\
+	ContentHints.c	\
+	MsgSigDigest.c	\
+	ContentReference.c	\
+	ESSSecurityLabel.c	\
+	SecurityPolicyIdentifier.c	\
+	SecurityClassification.c	\
+	ESSPrivacyMark.c	\
+	SecurityCategories.c	\
+	ESS-SecurityCategory.c	\
+	EquivalentLabels.c	\
+	MLExpansionHistory.c	\
+	MLData.c	\
+	EntityIdentifier.c	\
+	MLReceiptPolicy.c	\
+	SigningCertificate.c	\
+	ESSCertID.c	\
+	Hash.c	\
+	OCSPRequest.c	\
+	TBSRequest.c	\
+	OCSP-Signature.c	\
+	OCSP-Version.c	\
+	Request.c	\
+	CertID.c	\
+	OCSPResponse.c	\
+	OCSPResponseStatus.c	\
+	ResponseBytes.c	\
+	BasicOCSPResponse.c	\
+	ResponseData.c	\
+	ResponderID.c	\
+	KeyHash.c	\
+	SingleResponse.c	\
+	CertStatus.c	\
+	RevokedInfo.c	\
+	UnknownInfo.c	\
+	ArchiveCutoff.c	\
+	AcceptableResponses.c	\
+	ServiceLocator.c
+
+ASN_MODULE_HEADERS=	\
+	LPA.h	\
+	LpaVersion.h	\
+	PolicyInfos.h	\
+	PolicyInfo.h	\
+	OtherSigningCertificate.h	\
+	OtherCertID.h	\
+	OtherHash.h	\
+	OtherHashValue.h	\
+	OtherHashAlgAndValue.h	\
+	SignaturePolicyId.h	\
+	SigPolicyId.h	\
+	SigPolicyHash.h	\
+	SigPolicyQualifierInfo.h	\
+	SigPolicyQualifierId.h	\
+	SPuri.h	\
+	SPUserNotice.h	\
+	CommitmentTypeIndication.h	\
+	CommitmentTypeIdentifier.h	\
+	CommitmentTypeQualifier.h	\
+	SignerLocation.h	\
+	PostalAddress.h	\
+	SignerAttribute.h	\
+	ClaimedAttributes.h	\
+	CertifiedAttributes.h	\
+	ContentTimestamp.h	\
+	SignatureTimeStampToken.h	\
+	CompleteCertificateRefs.h	\
+	CompleteRevocationRefs.h	\
+	CrlOcspRef.h	\
+	CRLListID.h	\
+	CrlValidatedID.h	\
+	CrlIdentifier.h	\
+	OcspListID.h	\
+	OcspResponsesID.h	\
+	OcspIdentifier.h	\
+	OtherRevRefs.h	\
+	OtherRevRefType.h	\
+	CertificateValues.h	\
+	RevocationValues.h	\
+	OtherRevVals.h	\
+	OtherRevValType.h	\
+	ESCTimeStampToken.h	\
+	TimestampedCertsCRLs.h	\
+	ArchiveTimeStampToken.h	\
+	Attribute.h	\
+	AttributeType.h	\
+	AttributeValue.h	\
+	AttributeTypeAndValue.h	\
+	X520name.h	\
+	X520CommonName.h	\
+	X520LocalityName.h	\
+	X520StateOrProvinceName.h	\
+	X520OrganizationName.h	\
+	X520OrganizationalUnitName.h	\
+	X520Title.h	\
+	X520dnQualifier.h	\
+	X520countryName.h	\
+	X520SerialNumber.h	\
+	X520Pseudonym.h	\
+	DomainComponent.h	\
+	EmailAddress.h	\
+	Name.h	\
+	RDNSequence.h	\
+	DistinguishedName.h	\
+	RelativeDistinguishedName.h	\
+	DirectoryString.h	\
+	Certificate.h	\
+	TBSCertificate.h	\
+	Version.h	\
+	CertificateSerialNumber.h	\
+	Validity.h	\
+	Time.h	\
+	UniqueIdentifier.h	\
+	SubjectPublicKeyInfo.h	\
+	Extensions.h	\
+	Extension.h	\
+	CertificateList.h	\
+	TBSCertList.h	\
+	AlgorithmIdentifier.h	\
+	ORAddress.h	\
+	BuiltInStandardAttributes.h	\
+	CountryName.h	\
+	AdministrationDomainName.h	\
+	NetworkAddress.h	\
+	X121Address.h	\
+	TerminalIdentifier.h	\
+	PrivateDomainName.h	\
+	OrganizationName.h	\
+	NumericUserIdentifier.h	\
+	PersonalName.h	\
+	OrganizationalUnitNames.h	\
+	OrganizationalUnitName.h	\
+	BuiltInDomainDefinedAttributes.h	\
+	BuiltInDomainDefinedAttribute.h	\
+	ExtensionAttributes.h	\
+	ExtensionAttribute.h	\
+	CommonName.h	\
+	TeletexCommonName.h	\
+	TeletexOrganizationName.h	\
+	TeletexPersonalName.h	\
+	TeletexOrganizationalUnitNames.h	\
+	TeletexOrganizationalUnitName.h	\
+	PDSName.h	\
+	PhysicalDeliveryCountryName.h	\
+	PostalCode.h	\
+	PhysicalDeliveryOfficeName.h	\
+	PhysicalDeliveryOfficeNumber.h	\
+	ExtensionORAddressComponents.h	\
+	PhysicalDeliveryPersonalName.h	\
+	PhysicalDeliveryOrganizationName.h	\
+	ExtensionPhysicalDeliveryAddressComponents.h	\
+	UnformattedPostalAddress.h	\
+	StreetAddress.h	\
+	PostOfficeBoxAddress.h	\
+	PosteRestanteAddress.h	\
+	UniquePostalName.h	\
+	LocalPostalAttributes.h	\
+	PDSParameter.h	\
+	ExtendedNetworkAddress.h	\
+	PresentationAddress.h	\
+	TerminalType.h	\
+	TeletexDomainDefinedAttributes.h	\
+	TeletexDomainDefinedAttribute.h	\
+	SignaturePolicy.h	\
+	SignPolicyHash.h	\
+	SignPolicyInfo.h	\
+	PolicyIssuerName.h	\
+	FieldOfApplication.h	\
+	SignatureValidationPolicy.h	\
+	SigningPeriod.h	\
+	CommonRules.h	\
+	CommitmentRules.h	\
+	CommitmentRule.h	\
+	SelectedCommitmentTypes.h	\
+	CommitmentType.h	\
+	SignerAndVerifierRules.h	\
+	SignerRules.h	\
+	CMSAttrs.h	\
+	CertRefReq.h	\
+	CertInfoReq.h	\
+	VerifierRules.h	\
+	MandatedUnsignedAttr.h	\
+	CertificateTrustTrees.h	\
+	CertificateTrustPoint.h	\
+	PathLenConstraint.h	\
+	AcceptablePolicySet.h	\
+	CertRevReq.h	\
+	RevReq.h	\
+	EnuRevReq.h	\
+	SigningCertTrustCondition.h	\
+	TimestampTrustCondition.h	\
+	DeltaTime.h	\
+	AttributeTrustCondition.h	\
+	HowCertAttribute.h	\
+	AttributeConstraints.h	\
+	AttributeTypeConstraints.h	\
+	AttributeValueConstraints.h	\
+	AlgorithmConstraintSet.h	\
+	AlgorithmConstraints.h	\
+	AlgAndLength.h	\
+	SignPolExtensions.h	\
+	SignPolExtn.h	\
+	TimeStampReq.h	\
+	MessageImprint.h	\
+	TSAPolicyId.h	\
+	TimeStampResp.h	\
+	TimeStampToken.h	\
+	TSTInfo.h	\
+	Accuracy.h	\
+	AuthorityKeyIdentifier.h	\
+	KeyIdentifier.h	\
+	SubjectKeyIdentifier.h	\
+	KeyUsage.h	\
+	PrivateKeyUsagePeriod.h	\
+	CertificatePolicies.h	\
+	PolicyInformation.h	\
+	CertPolicyId.h	\
+	PolicyQualifierInfo.h	\
+	PolicyQualifierId.h	\
+	CPSuri.h	\
+	UserNotice.h	\
+	NoticeReference.h	\
+	DisplayText.h	\
+	PolicyMappings.h	\
+	SubjectAltName.h	\
+	GeneralNames.h	\
+	GeneralName.h	\
+	AnotherName.h	\
+	EDIPartyName.h	\
+	IssuerAltName.h	\
+	SubjectDirectoryAttributes.h	\
+	BasicConstraints.h	\
+	NameConstraints.h	\
+	GeneralSubtrees.h	\
+	GeneralSubtree.h	\
+	BaseDistance.h	\
+	PolicyConstraints.h	\
+	SkipCerts.h	\
+	CRLDistributionPoints.h	\
+	DistributionPoint.h	\
+	DistributionPointName.h	\
+	ReasonFlags.h	\
+	ExtKeyUsageSyntax.h	\
+	KeyPurposeId.h	\
+	InhibitAnyPolicy.h	\
+	FreshestCRL.h	\
+	AuthorityInfoAccessSyntax.h	\
+	AccessDescription.h	\
+	SubjectInfoAccessSyntax.h	\
+	CRLNumber.h	\
+	IssuingDistributionPoint.h	\
+	BaseCRLNumber.h	\
+	CRLReason.h	\
+	CertificateIssuer.h	\
+	HoldInstructionCode.h	\
+	InvalidityDate.h	\
+	ContentInfo.h	\
+	ContentType.h	\
+	SignedData.h	\
+	DigestAlgorithmIdentifiers.h	\
+	SignerInfos.h	\
+	EncapsulatedContentInfo.h	\
+	SignerInfo.h	\
+	SignerIdentifier.h	\
+	SignedAttributes.h	\
+	UnsignedAttributes.h	\
+	CMSAttribute.h	\
+	CMSAttributeValue.h	\
+	SignatureValue.h	\
+	EnvelopedData.h	\
+	OriginatorInfo.h	\
+	RecipientInfos.h	\
+	EncryptedContentInfo.h	\
+	EncryptedContent.h	\
+	UnprotectedAttributes.h	\
+	RecipientInfo.h	\
+	EncryptedKey.h	\
+	KeyTransRecipientInfo.h	\
+	RecipientIdentifier.h	\
+	KeyAgreeRecipientInfo.h	\
+	OriginatorIdentifierOrKey.h	\
+	OriginatorPublicKey.h	\
+	RecipientEncryptedKeys.h	\
+	RecipientEncryptedKey.h	\
+	KeyAgreeRecipientIdentifier.h	\
+	RecipientKeyIdentifier.h	\
+	CMSSubjectKeyIdentifier.h	\
+	KEKRecipientInfo.h	\
+	KEKIdentifier.h	\
+	PasswordRecipientInfo.h	\
+	OtherRecipientInfo.h	\
+	DigestedData.h	\
+	Digest.h	\
+	EncryptedData.h	\
+	AuthenticatedData.h	\
+	AuthAttributes.h	\
+	UnauthAttributes.h	\
+	MessageAuthenticationCode.h	\
+	DigestAlgorithmIdentifier.h	\
+	SignatureAlgorithmIdentifier.h	\
+	KeyEncryptionAlgorithmIdentifier.h	\
+	ContentEncryptionAlgorithmIdentifier.h	\
+	MessageAuthenticationCodeAlgorithm.h	\
+	KeyDerivationAlgorithmIdentifier.h	\
+	RevocationInfoChoices.h	\
+	RevocationInfoChoice.h	\
+	OtherRevocationInfoFormat.h	\
+	CertificateChoices.h	\
+	AttributeCertificateV2.h	\
+	OtherCertificateFormat.h	\
+	CertificateSet.h	\
+	IssuerAndSerialNumber.h	\
+	CMSVersion.h	\
+	UserKeyingMaterial.h	\
+	OtherKeyAttribute.h	\
+	MessageDigest.h	\
+	SigningTime.h	\
+	CMSTime.h	\
+	Countersignature.h	\
+	ExtendedCertificateOrCertificate.h	\
+	ExtendedCertificate.h	\
+	ExtendedCertificateInfo.h	\
+	Signature.h	\
+	AttributeCertificateV1.h	\
+	AttributeCertificateInfoV1.h	\
+	AttCertVersionV1.h	\
+	AttributeCertificate.h	\
+	AttributeCertificateInfo.h	\
+	AttCertVersion.h	\
+	Holder.h	\
+	ObjectDigestInfo.h	\
+	AttCertIssuer.h	\
+	V2Form.h	\
+	IssuerSerial.h	\
+	AttCertValidityPeriod.h	\
+	Targets.h	\
+	Target.h	\
+	TargetCert.h	\
+	IetfAttrSyntax.h	\
+	SvceAuthInfo.h	\
+	RoleSyntax.h	\
+	Clearance.h	\
+	ClassList.h	\
+	SecurityCategory.h	\
+	AAControls.h	\
+	AttrSpec.h	\
+	ACClearAttrs.h	\
+	ProxyInfo.h	\
+	PKIMessage.h	\
+	PKIHeader.h	\
+	PKIFreeText.h	\
+	PKIBody.h	\
+	CertificationRequest.h	\
+	CertificationRequestInfo.h	\
+	Attributes.h	\
+	PKIProtection.h	\
+	ProtectedPart.h	\
+	PasswordBasedMac.h	\
+	PBMParameter.h	\
+	DHBasedMac.h	\
+	DHBMParameter.h	\
+	NestedMessageContent.h	\
+	PKIFailureInfo.h	\
+	PKIStatusInfo.h	\
+	PKIStatus.h	\
+	OOBCert.h	\
+	OOBCertHash.h	\
+	POPODecKeyChallContent.h	\
+	Challenge.h	\
+	POPODecKeyRespContent.h	\
+	CertRepMessage.h	\
+	CertResponse.h	\
+	CertifiedKeyPair.h	\
+	CertOrEncCert.h	\
+	KeyRecRepContent.h	\
+	RevReqContent.h	\
+	RevDetails.h	\
+	RevRepContent.h	\
+	CAKeyUpdAnnContent.h	\
+	CertAnnContent.h	\
+	RevAnnContent.h	\
+	CRLAnnContent.h	\
+	PKIConfirmContent.h	\
+	InfoTypeAndValue.h	\
+	GenMsgContent.h	\
+	GenRepContent.h	\
+	ErrorMsgContent.h	\
+	CertReqMessages.h	\
+	CertReqMsg.h	\
+	CertRequest.h	\
+	CertTemplate.h	\
+	OptionalValidity.h	\
+	Controls.h	\
+	ProofOfPossession.h	\
+	POPOSigningKey.h	\
+	POPOSigningKeyInput.h	\
+	PKMACValue.h	\
+	PKIXCRMF-PBMParameter.h	\
+	POPOPrivKey.h	\
+	SubsequentMessage.h	\
+	RegToken.h	\
+	Authenticator.h	\
+	PKIPublicationInfo.h	\
+	SinglePubInfo.h	\
+	PKIArchiveOptions.h	\
+	CRMF-EncryptedKey.h	\
+	EncryptedValue.h	\
+	KeyGenParameters.h	\
+	OldCertId.h	\
+	CertId.h	\
+	ProtocolEncrKey.h	\
+	UTF8Pairs.h	\
+	CertReq.h	\
+	ReceiptRequest.h	\
+	ContentIdentifier.h	\
+	ReceiptsFrom.h	\
+	AllOrFirstTier.h	\
+	Receipt.h	\
+	ESSVersion.h	\
+	ContentHints.h	\
+	MsgSigDigest.h	\
+	ContentReference.h	\
+	ESSSecurityLabel.h	\
+	SecurityPolicyIdentifier.h	\
+	SecurityClassification.h	\
+	ESSPrivacyMark.h	\
+	SecurityCategories.h	\
+	ESS-SecurityCategory.h	\
+	EquivalentLabels.h	\
+	MLExpansionHistory.h	\
+	MLData.h	\
+	EntityIdentifier.h	\
+	MLReceiptPolicy.h	\
+	SigningCertificate.h	\
+	ESSCertID.h	\
+	Hash.h	\
+	OCSPRequest.h	\
+	TBSRequest.h	\
+	OCSP-Signature.h	\
+	OCSP-Version.h	\
+	Request.h	\
+	CertID.h	\
+	OCSPResponse.h	\
+	OCSPResponseStatus.h	\
+	ResponseBytes.h	\
+	BasicOCSPResponse.h	\
+	ResponseData.h	\
+	ResponderID.h	\
+	KeyHash.h	\
+	SingleResponse.h	\
+	CertStatus.h	\
+	RevokedInfo.h	\
+	UnknownInfo.h	\
+	ArchiveCutoff.h	\
+	AcceptableResponses.h	\
+	ServiceLocator.h
+
+ASN_MODULE_HEADERS+=ANY.h
+ASN_MODULE_SOURCES+=ANY.c
+ASN_MODULE_HEADERS+=BMPString.h
+ASN_MODULE_SOURCES+=BMPString.c
+ASN_MODULE_HEADERS+=UTF8String.h
+ASN_MODULE_HEADERS+=BOOLEAN.h
+ASN_MODULE_SOURCES+=BOOLEAN.c
+ASN_MODULE_HEADERS+=INTEGER.h
+ASN_MODULE_HEADERS+=NativeEnumerated.h
+ASN_MODULE_HEADERS+=GeneralizedTime.h
+ASN_MODULE_SOURCES+=GeneralizedTime.c
+ASN_MODULE_HEADERS+=IA5String.h
+ASN_MODULE_SOURCES+=IA5String.c
+ASN_MODULE_SOURCES+=INTEGER.c
+ASN_MODULE_HEADERS+=NULL.h
+ASN_MODULE_SOURCES+=NULL.c
+ASN_MODULE_SOURCES+=NativeEnumerated.c
+ASN_MODULE_HEADERS+=NativeInteger.h
+ASN_MODULE_SOURCES+=NativeInteger.c
+ASN_MODULE_HEADERS+=NumericString.h
+ASN_MODULE_SOURCES+=NumericString.c
+ASN_MODULE_HEADERS+=OBJECT_IDENTIFIER.h
+ASN_MODULE_SOURCES+=OBJECT_IDENTIFIER.c
+ASN_MODULE_HEADERS+=PrintableString.h
+ASN_MODULE_SOURCES+=PrintableString.c
+ASN_MODULE_HEADERS+=TeletexString.h
+ASN_MODULE_SOURCES+=TeletexString.c
+ASN_MODULE_HEADERS+=UTCTime.h
+ASN_MODULE_SOURCES+=UTCTime.c
+ASN_MODULE_SOURCES+=UTF8String.c
+ASN_MODULE_HEADERS+=UniversalString.h
+ASN_MODULE_SOURCES+=UniversalString.c
+ASN_MODULE_HEADERS+=VisibleString.h
+ASN_MODULE_SOURCES+=VisibleString.c
+ASN_MODULE_HEADERS+=asn_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=asn_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=asn_SET_OF.h
+ASN_MODULE_SOURCES+=asn_SET_OF.c
+ASN_MODULE_HEADERS+=constr_CHOICE.h
+ASN_MODULE_SOURCES+=constr_CHOICE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=constr_SET_OF.h
+ASN_MODULE_HEADERS+=constr_SET.h
+ASN_MODULE_SOURCES+=constr_SET.c
+ASN_MODULE_SOURCES+=constr_SET_OF.c
+ASN_MODULE_HEADERS+=asn_application.h
+ASN_MODULE_HEADERS+=asn_system.h
+ASN_MODULE_HEADERS+=asn_codecs.h
+ASN_MODULE_HEADERS+=asn_internal.h
+ASN_MODULE_HEADERS+=OCTET_STRING.h
+ASN_MODULE_SOURCES+=OCTET_STRING.c
+ASN_MODULE_HEADERS+=BIT_STRING.h
+ASN_MODULE_SOURCES+=BIT_STRING.c
+ASN_MODULE_SOURCES+=asn_codecs_prim.c
+ASN_MODULE_HEADERS+=asn_codecs_prim.h
+ASN_MODULE_HEADERS+=ber_tlv_length.h
+ASN_MODULE_SOURCES+=ber_tlv_length.c
+ASN_MODULE_HEADERS+=ber_tlv_tag.h
+ASN_MODULE_SOURCES+=ber_tlv_tag.c
+ASN_MODULE_HEADERS+=ber_decoder.h
+ASN_MODULE_SOURCES+=ber_decoder.c
+ASN_MODULE_HEADERS+=der_encoder.h
+ASN_MODULE_SOURCES+=der_encoder.c
+ASN_MODULE_HEADERS+=constr_TYPE.h
+ASN_MODULE_SOURCES+=constr_TYPE.c
+ASN_MODULE_HEADERS+=constraints.h
+ASN_MODULE_SOURCES+=constraints.c
+ASN_MODULE_HEADERS+=xer_support.h
+ASN_MODULE_SOURCES+=xer_support.c
+ASN_MODULE_HEADERS+=xer_decoder.h
+ASN_MODULE_SOURCES+=xer_decoder.c
+ASN_MODULE_HEADERS+=xer_encoder.h
+ASN_MODULE_SOURCES+=xer_encoder.c
+ASN_MODULE_HEADERS+=per_support.h
+ASN_MODULE_SOURCES+=per_support.c
+ASN_MODULE_HEADERS+=per_decoder.h
+ASN_MODULE_SOURCES+=per_decoder.c
+ASN_MODULE_HEADERS+=per_encoder.h
+ASN_MODULE_SOURCES+=per_encoder.c
+ASN_MODULE_HEADERS+=per_opentype.h
+ASN_MODULE_SOURCES+=per_opentype.c
+ASN_CONVERTER_SOURCES+=converter-sample.c
+
+
+lib_LTLIBRARIES=libsomething.la
+libsomething_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
+
+# This file may be used as an input for make(3)
+# Remove the lines below to convert it into a pure .am file
+TARGET = progname
+CFLAGS += -I.
+OBJS=${ASN_MODULE_SOURCES:.c=.o} ${ASN_CONVERTER_SOURCES:.c=.o}
+
+all: $(TARGET)
+
+$(TARGET): ${OBJS}
+	$(CC) $(CFLAGS) -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS)
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+.c.o:
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	rm -f $(TARGET)
+	rm -f $(OBJS)
+
+regen: regenerate-from-asn1-source
+
+regenerate-from-asn1-source:
+	asn1c -S/skeletons -fnative-types lpa.asn1
+
