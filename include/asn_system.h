@@ -46,7 +46,6 @@ typedef	unsigned char	uint8_t;
 typedef	unsigned short	uint16_t;
 typedef	unsigned int	uint32_t;
 #endif	/* ASSUMESTDTYPES */
-
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <float.h>

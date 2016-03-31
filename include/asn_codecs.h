@@ -80,10 +80,10 @@ typedef struct asn_enc_rval_s {
  * (i.e., print the offending remainder of the buffer).
  */
 enum asn_dec_rval_code_e {
-	RC_OK,		/* Decoded successfully */
-	RC_WMORE,	/* More data expected, call again */
-	RC_FAIL,	/* Failure to decode data */
-	RC_CHECKFAILED /* Decoded successfully, but constraint checking failed */
+	RC_OK,		   /* Decoded successfully */
+	RC_WMORE,	   /* More data expected, call again */
+	RC_FAIL,	   /* Failure to decode data */
+	RC_CHECKFAIL   /* Check constraints failed */
 };
 typedef struct asn_dec_rval_s {
 	enum asn_dec_rval_code_e code;	/* Result code */

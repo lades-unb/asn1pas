@@ -3,7 +3,6 @@
  * All rights reserved.
  * Redistribution and modifications are permitted subject to BSD license.
  */
-#include <stdio.h>
 #include <asn_internal.h>
 #include <INTEGER.h>
 #include <asn_codecs_prim.h>	/* Encoder and decoder of a primitive type */
@@ -146,12 +145,10 @@ INTEGER__dump(asn_TYPE_descriptor_t *td, const INTEGER_t *st, asn_app_consume_by
 			scrsize = el->enum_len + 32;
 			scr = (char *)alloca(scrsize);
 			if(plainOrXER == 0)
-				ret = _snprintf(scr, scrsize,
-				//ret = sprintf(scr, 
+				ret = snprintf(scr, scrsize,
 					"%ld (%s)", accum, el->enum_name);
 			else
-				ret = _snprintf(scr, scrsize,
-				//ret = sprintf(scr,
+				ret = snprintf(scr, scrsize,
 					"<%s/>", el->enum_name);
 		} else if(plainOrXER && specs && specs->strict_enumeration) {
 			ASN_DEBUG("ASN.1 forbids dealing with "
@@ -161,7 +158,7 @@ INTEGER__dump(asn_TYPE_descriptor_t *td, const INTEGER_t *st, asn_app_consume_by
 		} else {
 			scrsize = sizeof(scratch);
 			scr = scratch;
-			ret = _snprintf(scr, scrsize,
+			ret = snprintf(scr, scrsize,
 				(specs && specs->field_unsigned)
 				?"%lu":"%ld", accum);
 		}

@@ -32,7 +32,6 @@ struct tm
 #endif
 
 #endif	/* __CYGWIN__ */
-
 #ifndef	__ASN_INTERNAL_TEST_MODE__
 
 /*

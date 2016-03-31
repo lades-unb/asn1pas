@@ -22,13 +22,6 @@ xer_type_encoder_f UTCTime_encode_xer;
 /***********************
  * Some handy helpers. *
  ***********************/
-#include <sys/timeb.h>
-#include <sys/types.h>
-
-#ifndef WINSOCK2
-#define WINSOCK2
-#  include <winsock2.h>
-#endif 
 
 struct tm;	/* <time.h> */
 

@@ -23,9 +23,8 @@ xer_type_encoder_f GeneralizedTime_encode_xer;
 /***********************
  * Some handy helpers. *
  ***********************/
-#include <time.h>
 
-//struct tm;	/* <time.h> */
+struct tm;	/* <time.h> */
 
 /*
  * Convert a GeneralizedTime structure into time_t
@@ -34,15 +33,13 @@ xer_type_encoder_f GeneralizedTime_encode_xer;
  * instead of default local one.
  * On error returns -1 and errno set to EINVAL
  */
-time_t asn_GT2time(const GeneralizedTime_t *st, struct tm *ret_tm, int as_gmt);
+time_t asn_GT2time(const GeneralizedTime_t *, struct tm *_optional_tm4fill,
+	int as_gmt);
 
 /* A version of the above function also returning the fractions of seconds */
-time_t asn_GT2time_frac(const GeneralizedTime_t *st, int *frac_value, int *frac_digits, 
-    struct tm *ret_tm, int as_gmt);
-
-//time_t asn_GT2time_frac(const GeneralizedTime_t *gt,
-//	int *frac_value, int *frac_digits,	/* (value / (10 ^ digits)) */
-//	struct tm *_optional_tm4fill, int as_gmt);
+time_t asn_GT2time_frac(const GeneralizedTime_t *,
+	int *frac_value, int *frac_digits,	/* (value / (10 ^ digits)) */
+	struct tm *_optional_tm4fill, int as_gmt);
 
 /*
  * Another version returning fractions with defined precision

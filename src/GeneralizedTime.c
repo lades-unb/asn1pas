@@ -14,35 +14,6 @@
 #include <time.h>
 #endif	/* __CYGWIN__ */
 
-#ifndef _TM_DEFINED
-#define _TM_DEFINED
-/*
-* A structure for storing all kinds of useful information about the
-* current (or another) time.
-*/
-struct tm
-{
-	int	tm_sec;		/* Seconds: 0-59 (K&R says 0-61?) */
-	int	tm_min;		/* Minutes: 0-59 */
-	int	tm_hour;	/* Hours since midnight: 0-23 */
-	int	tm_mday;	/* Day of the month: 1-31 */
-	int	tm_mon;		/* Months *since* january: 0-11 */
-	int	tm_year;	/* Years since 1900 */
-	int	tm_wday;	/* Days since Sunday (0-6) */
-	int	tm_yday;	/* Days since Jan. 1: 0-365 */
-	int	tm_isdst;	/* +1 Daylight Savings Time, 0 No DST,
-					* -1 don't know */
-};
-
-struct tm *localtime(const time_t *timer);
-struct tm *gmtime(const time_t *timer);
-time_t mktime(struct tm *timeptr);
-int _setenv(const char *envname, const char *envval, int overwrite);
-void _tzset(void);
-
-#endif
-
-
 #if	defined(WIN32)
 #pragma message( "PLEASE STOP AND READ!")
 #pragma message( "  localtime_r is implemented via localtime(), which may be not thread-safe.")
@@ -51,8 +22,6 @@ void _tzset(void);
 #pragma message( "  You must fix the code by inserting appropriate locking")
 #pragma message( "  if you want to use asn_GT2time() or asn_UT2time().")
 #pragma message( "PLEASE STOP AND READ!")
-
-//#define time_t unsigned long;
 
 static struct tm *localtime_r(const time_t *tloc, struct tm *result) {
 	struct tm *tm;
@@ -99,12 +68,12 @@ static struct tm *gmtime_r(const time_t *tloc, struct tm *result) {
 #endif	/* HAVE_TM_GMTOFF */
 
 #if	(defined(_EMULATE_TIMEGM) || !defined(HAVE_TM_GMTOFF))
-#pragma message ("PLEASE STOP AND READ!")
-#pragma message ("  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe.")
-#pragma message ("  ")
-#pragma message ("  You must fix the code by inserting appropriate locking")
-#pragma message ("  if you want to use asn_GT2time() or asn_UT2time().")
-#pragma message ("PLEASE STOP AND READ!")
+#pragma message ( "PLEASE STOP AND READ!" )
+#pragma message ( "  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe." )
+#pragma message ( "  " )
+#pragma message ( "  You must fix the code by inserting appropriate locking" )
+#pragma message ( "  if you want to use asn_GT2time() or asn_UT2time()." )
+#pragma message ( "PLEASE STOP AND READ!" )
 #endif	/* _EMULATE_TIMEGM */
 
 /*
@@ -140,14 +109,14 @@ static long GMTOFF(struct tm a){
 		if(tzlen < sizeof(tzoldbuf)) {		    \
 			tzold =								\
             memcpy(tzoldbuf, tzold, tzlen + 1);	\
-		} else {						        \
+				} else {						\
 			char *dupptr = tzold;				\
 			tzold = MALLOC(tzlen + 1);			\
 			if (tzold)                          \
                memcpy(tzold, dupptr, tzlen + 1);\
-		}							            \
+				}							    \
 		putenv("TZ=UTC");						\
-	}											\
+		}								        \
 	tzset();	 								\
 } while(0)
 
@@ -161,9 +130,9 @@ static long GMTOFF(struct tm a){
 		*tzoldbuf = 0;						\
 		if(tzold != tzoldbuf)				\
 			FREEMEM(tzold);					\
-	} else {							    \
+		} else {							\
 	    putenv("TZ=");                      \
-	}								        \
+		}								    \
 	tzset();							    \
 } while(0); } while(0);
 
@@ -613,7 +582,7 @@ asn_time2GT(GeneralizedTime_t *opt_gt, const struct tm *tm, int force_gmt) {
 GeneralizedTime_t *
 asn_time2GT_frac(GeneralizedTime_t *opt_gt, const struct tm *tm, int frac_value, int frac_digits, int force_gmt) {
 	struct tm tm_s;
-	long gmtoff = 0;
+	long gmtoff;
 	const unsigned int buf_size =
 		4 + 2 + 2	/* yyyymmdd */
 		+ 2 + 2 + 2	/* hhmmss */
@@ -635,7 +604,7 @@ asn_time2GT_frac(GeneralizedTime_t *opt_gt, const struct tm *tm, int frac_value,
 	buf = (char *)MALLOC(buf_size);
 	if(!buf) return 0;
 
-	//gmtoff = GMTOFF(*tm);
+	gmtoff = GMTOFF(*tm);
 
 	if(force_gmt && gmtoff) {
 		tm_s = *tm;
