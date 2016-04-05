@@ -20,47 +20,8 @@ PolicyIssuerName_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			td->name, __FILE__, __LINE__);
 		return -1;
 	}
-	
-	// PolicyIssuerName is implemented as GeneralNames, so inherit its characteristics
-	//PolicyIssuerName_1_inherit_TYPE_descriptor(td);
 
-	//asn_constr_check_f *constr = td->check_constraints;
-	//return constr(td, sptr, ctfailcb, app_key);
-
-	/* Determine the number of elements */
-	size = _A_CSEQUENCE_FROM_VOID(sptr)->count;
-	
-	if((size >= 1)) {
-
-		asn_TYPE_member_t *elm = td->elements;
-		asn_constr_check_f *constr;
-		const asn_anonymous_set_ *list = _A_CSET_FROM_VOID(sptr);
-		int i = 0;
-
-		constr = elm->memb_constraints;
-		if (!constr) constr = elm->type->check_constraints;
-
-		/* Iterate over the members of an array.
-		 * Validate each in turn, until one fails.
-		 */
-		for (i = 0; i < list->count; i++) {
-			const void *memb_ptr = list->array[i];
-			int ret;
-
-			if (!memb_ptr) continue;
-
-			ret = constr(elm->type, memb_ptr, ctfailcb, app_key);
-			if (ret) return ret;
-		}
-
-	} else {
-		_ASN_CTFAIL(app_key, td, sptr,
-			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
-		return -1;
-	}
-
-	return 0;
+	return SEQUENCE_OF_constraint(td, sptr, ctfailcb, app_key);
 }
 
 /*
