@@ -12,8 +12,6 @@
 int
 PolicyIssuerName_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
-	size_t size;
-	
 	if(!sptr) {
 		_ASN_CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
