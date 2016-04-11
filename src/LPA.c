@@ -121,9 +121,13 @@ DecodeLPA(const void *buffer, size_t buf_size, int *retcode) {
 	}
 	else {
 		/* Free partially decoded rect */
-		asn_DEF_LPA.free_struct(&asn_DEF_LPA, polist, 0);
+		LPA_free(polist);
 		*retcode = RC_FAIL;
 		return 0;
 	}
 }
 
+void LPA_free(LPA_t *lpa) {
+	if (lpa)
+		asn_DEF_LPA.free_struct(&asn_DEF_LPA, lpa, 0);
+}

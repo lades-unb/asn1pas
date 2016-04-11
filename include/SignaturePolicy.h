@@ -34,8 +34,12 @@ typedef struct SignaturePolicy {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_SignaturePolicy;
 
-SignaturePolicy_t *
+/* Decoder */
+SignaturePolicy_t*
 DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode);
+
+/* Freeing the structure */
+void SignaturePolicy_free(SignaturePolicy_t *signaturePolicy);
 
 #ifdef __cplusplus
 }

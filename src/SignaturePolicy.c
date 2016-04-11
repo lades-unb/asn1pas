@@ -79,7 +79,7 @@ asn_TYPE_descriptor_t asn_DEF_SignaturePolicy = {
 	&asn_SPC_SignaturePolicy_specs_1	/* Additional specs */
 };
 
-SignaturePolicy_t *
+SignaturePolicy_t*
 DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode) {
 	SignaturePolicy_t *sigpol = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
@@ -104,8 +104,13 @@ DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode) {
 	}
 	else {
 		/* Free partially decoded rect */
-		asn_DEF_SignaturePolicy.free_struct(&asn_DEF_SignaturePolicy, sigpol, 0);
+		SignaturePolicy_free(sigpol);
 		*retcode = RC_FAIL;
 		return 0;
 	}
+}
+
+void SignaturePolicy_free(SignaturePolicy_t * sigpol) {
+	if (sigpol)
+		asn_DEF_SignaturePolicy.free_struct(&asn_DEF_SignaturePolicy, sigpol, 0);
 }
