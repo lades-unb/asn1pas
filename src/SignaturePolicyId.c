@@ -149,3 +149,31 @@ asn_TYPE_descriptor_t asn_DEF_SignaturePolicyId = {
 	&asn_SPC_SignaturePolicyId_specs_1	/* Additional specs */
 };
 
+SignaturePolicyId_t*
+DecodeSignaturePolicyId(const void * buffer, size_t buf_size) {
+	SignaturePolicyId_t *sigpol_id = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_SignaturePolicyId.ber_decoder(0,
+		&asn_DEF_SignaturePolicyId,
+		(void **)&sigpol_id,
+		buffer, buf_size,
+		0);
+
+	if (rval.code == RC_OK) {
+		return sigpol_id;          /* Decoding succeeded */
+	}
+	else {
+		/* Free partially decoded rect */
+		SignaturePolicyId_free(sigpol_id);
+		return 0;
+	}
+}
+
+void
+SignaturePolicyId_free(SignaturePolicyId_t *sigPolicyId) {
+	if (sigPolicyId) {
+		asn_DEF_SignaturePolicyId.free_struct(
+			&asn_DEF_SignaturePolicyId, sigPolicyId, 0);
+	}
+}
+

@@ -111,6 +111,7 @@ DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode) {
 }
 
 void SignaturePolicy_free(SignaturePolicy_t * sigpol) {
-	if (sigpol)
+	if (sigpol) {
 		asn_DEF_SignaturePolicy.free_struct(&asn_DEF_SignaturePolicy, sigpol, 0);
+	}
 }
