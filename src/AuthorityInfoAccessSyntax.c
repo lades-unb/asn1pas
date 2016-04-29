@@ -52,3 +52,33 @@ asn_TYPE_descriptor_t asn_DEF_AuthorityInfoAccessSyntax = {
 	&asn_SPC_AuthorityInfoAccessSyntax_specs_1	/* Additional specs */
 };
 
+void AIA_free(AuthorityInfoAccessSyntax_t *aia);
+
+AuthorityInfoAccessSyntax_t*
+DecodeAIA(const void *buffer, size_t buf_size) {
+	AuthorityInfoAccessSyntax_t *aia = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_AuthorityInfoAccessSyntax.ber_decoder(0,
+		&asn_DEF_AuthorityInfoAccessSyntax,
+		(void **)&aia,
+		buffer, buf_size,
+		0);
+
+	if (rval.code == RC_OK) {
+		/* Check ASN.1 constraints */
+		return aia; /* Decoding succeeded */
+	}
+	else {
+		/* Free partially decoded rect */
+		AIA_free(aia);
+		return 0;
+	}
+}
+
+void
+AIA_free(AuthorityInfoAccessSyntax_t *aia) {
+	if (aia) {
+		asn_DEF_AuthorityInfoAccessSyntax.free_struct(
+			&asn_DEF_AuthorityInfoAccessSyntax, aia, 0);
+	}
+}

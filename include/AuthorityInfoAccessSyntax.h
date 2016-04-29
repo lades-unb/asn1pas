@@ -33,6 +33,12 @@ typedef struct AuthorityInfoAccessSyntax {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_AuthorityInfoAccessSyntax;
 
+/* Decoder */
+AuthorityInfoAccessSyntax_t* DecodeAIA(const void *buffer, size_t buf_size);
+
+/* Freeing structure */
+void AIA_free(AuthorityInfoAccessSyntax_t *aia);
+
 #ifdef __cplusplus
 }
 #endif

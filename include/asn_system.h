@@ -39,7 +39,6 @@
 #endif
 #ifndef	ASSUMESTDTYPES	/* Standard types have been defined elsewhere */
 #define	ssize_t		SSIZE_T
-//typedef	char		int8_t;
 typedef	short		int16_t;
 typedef	int		int32_t;
 typedef	unsigned char	uint8_t;
@@ -48,11 +47,6 @@ typedef	unsigned int	uint32_t;
 #endif	/* ASSUMESTDTYPES */
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <float.h>
-#define isnan _isnan
-#define finite _finite
-#define copysign _copysign
-#define	ilogb	_logb
 #else	/* !_MSC_VER */
 #include <stdint.h>
 #endif	/* _MSC_VER */
