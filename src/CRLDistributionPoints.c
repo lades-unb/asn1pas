@@ -52,3 +52,31 @@ asn_TYPE_descriptor_t asn_DEF_CRLDistributionPoints = {
 	&asn_SPC_CRLDistributionPoints_specs_1	/* Additional specs */
 };
 
+CRLDistributionPoints_t*
+DecodeCRLDistributionPoints(const void *buffer, size_t buf_size) {
+	CRLDistributionPoints_t *crl = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_CRLDistributionPoints.ber_decoder(0,
+		&asn_DEF_CRLDistributionPoints,
+		(void **)&crl,
+		buffer, buf_size,
+		0);
+
+	if (rval.code == RC_OK) {
+		/* Check ASN.1 constraints */
+		return crl; /* Decoding succeeded */
+	}
+	else {
+		/* Free partially decoded rect */
+		CRLDistributionPoints_free(crl);
+		return 0;
+	}
+}
+
+void
+CRLDistributionPoints_free(CRLDistributionPoints_t *crl) {
+	if (crl) {
+		asn_DEF_CRLDistributionPoints.free_struct(
+			&asn_DEF_CRLDistributionPoints, crl, 0);
+	}
+}

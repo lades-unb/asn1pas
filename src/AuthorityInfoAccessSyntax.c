@@ -52,8 +52,6 @@ asn_TYPE_descriptor_t asn_DEF_AuthorityInfoAccessSyntax = {
 	&asn_SPC_AuthorityInfoAccessSyntax_specs_1	/* Additional specs */
 };
 
-void AIA_free(AuthorityInfoAccessSyntax_t *aia);
-
 AuthorityInfoAccessSyntax_t*
 DecodeAIA(const void *buffer, size_t buf_size) {
 	AuthorityInfoAccessSyntax_t *aia = 0; /* Note this 0! */

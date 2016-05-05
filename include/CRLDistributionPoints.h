@@ -33,6 +33,12 @@ typedef struct CRLDistributionPoints {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_CRLDistributionPoints;
 
+/* Decoder */
+CRLDistributionPoints_t* DecodeCRLDistributionPoints(const void *buffer, size_t buf_size);
+
+/* Freeing structure */
+void CRLDistributionPoints_free(CRLDistributionPoints_t *aia);
+
 #ifdef __cplusplus
 }
 #endif
