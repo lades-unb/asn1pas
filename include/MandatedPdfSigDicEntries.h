@@ -33,6 +33,13 @@ typedef struct MandatedPdfSigDicEntries {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_MandatedPdfSigDicEntries;
 
+/* Decoder */
+MandatedPdfSigDicEntries_t*
+DecodeMandatedPdfSigDicEntries(const void *buffer, size_t buf_size);
+
+/* Freeing */
+void MandatedPdfSigDicEntries_free(MandatedPdfSigDicEntries_t *mandatedEntries);
+
 #ifdef __cplusplus
 }
 #endif

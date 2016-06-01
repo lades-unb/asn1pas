@@ -12,8 +12,8 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include "PdfEntry.h"
-#include <BOOLEAN.h>
+#include <asn_SEQUENCE_OF.h>
+#include <constr_SEQUENCE_OF.h>
 #include <constr_SEQUENCE.h>
 
 #ifdef __cplusplus
@@ -22,12 +22,17 @@ extern "C" {
 
 /* Forward declarations */
 struct VriDictionary;
+struct PdfEntry;
 
 /* DssDictionary */
 typedef struct DssDictionary {
-	PdfEntry_t	 type;
+	struct mandatedEntries {
+		A_SEQUENCE_OF(struct PdfEntry) list;
+		
+		/* Context for parsing across buffer boundaries */
+		asn_struct_ctx_t _asn_ctx;
+	} mandatedEntries;
 	struct VriDictionary	*vriDictionary	/* OPTIONAL */;
-	BOOLEAN_t	*paArtifacts	/* DEFAULT FALSE */;
 	
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
@@ -42,5 +47,6 @@ extern asn_TYPE_descriptor_t asn_DEF_DssDictionary;
 
 /* Referred external types */
 #include "VriDictionary.h"
+#include "PdfEntry.h"
 
 #endif	/* _DssDictionary_H_ */

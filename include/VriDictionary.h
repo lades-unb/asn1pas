@@ -12,20 +12,26 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include "PdfEntry.h"
-#include "TimeReferenceType.h"
-#include <BOOLEAN.h>
+#include <asn_SEQUENCE_OF.h>
+#include <constr_SEQUENCE_OF.h>
 #include <constr_SEQUENCE.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/* Forward declarations */
+struct PdfEntry;
+//typedef struct mandatedEntries;
+
 /* VriDictionary */
 typedef struct VriDictionary {
-	PdfEntry_t	 type;
-	TimeReferenceType_t	*timeReference	/* OPTIONAL */;
-	BOOLEAN_t	*paArtifacts	/* DEFAULT FALSE */;
+	struct _mandatedEntries {
+		A_SEQUENCE_OF(struct PdfEntry) list;
+		
+		/* Context for parsing across buffer boundaries */
+		asn_struct_ctx_t _asn_ctx;
+	} _mandatedEntries;
 	
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
@@ -37,5 +43,8 @@ extern asn_TYPE_descriptor_t asn_DEF_VriDictionary;
 #ifdef __cplusplus
 }
 #endif
+
+/* Referred external types */
+#include "PdfEntry.h"
 
 #endif	/* _VriDictionary_H_ */

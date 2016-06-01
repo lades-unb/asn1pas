@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 /* SigPolicyId */
-typedef OBJECT_IDENTIFIER_t	 SigPolicyId_t;
+typedef OBJECT_IDENTIFIER_t SigPolicyId_t;
 
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_SigPolicyId;

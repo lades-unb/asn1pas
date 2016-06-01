@@ -131,4 +131,6 @@ void LPA_free(LPA_t *lpa) {
 	if (lpa) {
 		asn_DEF_LPA.free_struct(&asn_DEF_LPA, lpa, 0);
 	}
+
+	&lpa == NULL;
 }
