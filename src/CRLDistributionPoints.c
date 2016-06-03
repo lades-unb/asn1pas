@@ -53,13 +53,13 @@ asn_TYPE_descriptor_t asn_DEF_CRLDistributionPoints = {
 };
 
 CRLDistributionPoints_t*
-DecodeCRLDistributionPoints(const void *buffer, size_t buf_size) {
+DecodeCRLDistributionPoints(const void *buf, size_t size) {
 	CRLDistributionPoints_t *crl = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
 	rval = asn_DEF_CRLDistributionPoints.ber_decoder(0,
 		&asn_DEF_CRLDistributionPoints,
 		(void **)&crl,
-		buffer, buf_size,
+		buf, size,
 		0);
 
 	if (rval.code == RC_OK) {

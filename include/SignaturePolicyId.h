@@ -44,7 +44,7 @@ typedef struct SignaturePolicyId {
 extern asn_TYPE_descriptor_t asn_DEF_SignaturePolicyId;
 
 /* Decoder */
-SignaturePolicyId_t* DecodeSignaturePolicyId(const void *buffer, size_t buf_size);
+SignaturePolicyId_t* DecodeSignaturePolicyId(const void *buf, size_t size);
 
 /* Freeing the structure */
 void SignaturePolicyId_free(SignaturePolicyId_t *sigPolicyId);

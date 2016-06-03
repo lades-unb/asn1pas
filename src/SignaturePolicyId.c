@@ -150,13 +150,13 @@ asn_TYPE_descriptor_t asn_DEF_SignaturePolicyId = {
 };
 
 SignaturePolicyId_t*
-DecodeSignaturePolicyId(const void * buffer, size_t buf_size) {
+DecodeSignaturePolicyId(const void *buf, size_t size) {
 	SignaturePolicyId_t *sigpol_id = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
 	rval = asn_DEF_SignaturePolicyId.ber_decoder(0,
 		&asn_DEF_SignaturePolicyId,
 		(void **)&sigpol_id,
-		buffer, buf_size,
+		buf, size,
 		0);
 
 	if (rval.code == RC_OK) {

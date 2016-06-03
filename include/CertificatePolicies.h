@@ -33,6 +33,12 @@ typedef struct CertificatePolicies {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_CertificatePolicies;
 
+/* Decoder */
+CertificatePolicies_t* DecodeCertificatePolicies(const void *buf, size_t size);
+
+/* Freeing the structure */
+void CertificatePolicies_free(CertificatePolicies_t *certPol);
+
 #ifdef __cplusplus
 }
 #endif

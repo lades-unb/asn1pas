@@ -53,13 +53,13 @@ asn_TYPE_descriptor_t asn_DEF_AuthorityInfoAccessSyntax = {
 };
 
 AuthorityInfoAccessSyntax_t*
-DecodeAIA(const void *buffer, size_t buf_size) {
+DecodeAIA(const void *buf, size_t size) {
 	AuthorityInfoAccessSyntax_t *aia = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
 	rval = asn_DEF_AuthorityInfoAccessSyntax.ber_decoder(0,
 		&asn_DEF_AuthorityInfoAccessSyntax,
 		(void **)&aia,
-		buffer, buf_size,
+		buf, size,
 		0);
 
 	if (rval.code == RC_OK) {

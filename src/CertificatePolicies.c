@@ -52,3 +52,31 @@ asn_TYPE_descriptor_t asn_DEF_CertificatePolicies = {
 	&asn_SPC_CertificatePolicies_specs_1	/* Additional specs */
 };
 
+CertificatePolicies_t *
+DecodeCertificatePolicies(const void * buf, size_t size)
+{
+	CertificatePolicies_t *certPol = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_CertificatePolicies.ber_decoder(0,
+		&asn_DEF_CertificatePolicies,
+		(void **)&certPol,
+		buf, size,
+		0);
+
+	if (rval.code == RC_OK) {
+		return certPol;          /* Decoding succeeded */
+	}
+	else {
+		/* Free partially decoded rect */
+		CertificatePolicies_free(certPol);
+		return 0;
+	}
+}
+
+void
+CertificatePolicies_free(CertificatePolicies_t *certPol) {
+	if (certPol) {
+		asn_DEF_CertificatePolicies.free_struct(
+			&asn_DEF_CertificatePolicies, certPol, 0);
+	}
+}
