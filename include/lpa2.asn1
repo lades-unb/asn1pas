@@ -348,12 +348,12 @@ BEGIN
 
 -- PKIX specific OIDs
 
-id-pkix  OBJECT IDENTIFIER  ::=
+id-pkix  OBJECT IDENTIFIER ::=
          { iso(1) identified-organization(3) dod(6) internet(1)
                     security(5) mechanisms(5) pkix(7) }
 -- PKIX arcs
 
-id-pe OBJECT IDENTIFIER  ::=  { id-pkix 1 }
+id-pe OBJECT IDENTIFIER ::=  { id-pkix 1 }
         -- arc for private certificate extensions
 id-qt OBJECT IDENTIFIER ::= { id-pkix 2 }
         -- arc for policy qualifier types
@@ -384,7 +384,7 @@ Attribute ::= SEQUENCE {
     -- at least one value is required
 }
 
-AttributeType  ::=  OBJECT IDENTIFIER
+AttributeType ::=  OBJECT IDENTIFIER
 
 AttributeValue ::=  ANY
 
@@ -547,7 +547,7 @@ RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
 
 DistinguishedName ::=   RDNSequence
 
-RelativeDistinguishedName  ::=
+RelativeDistinguishedName ::=
                     SET SIZE (1 .. MAX) OF AttributeTypeAndValue					
 
 -- Directory string type --
@@ -561,12 +561,12 @@ DirectoryString ::= CHOICE {
 
 -- certificate and CRL specific structures begin here
 
-Certificate  ::=  SEQUENCE  {
+Certificate ::=  SEQUENCE  {
      tbsCertificate       TBSCertificate,
      signatureAlgorithm   AlgorithmIdentifier,
      signature            BIT STRING  }
 
-TBSCertificate  ::=  SEQUENCE  {
+TBSCertificate ::=  SEQUENCE  {
      version         [0]  Version DEFAULT v1,
      serialNumber         CertificateSerialNumber,
      signature            AlgorithmIdentifier,
@@ -581,9 +581,9 @@ TBSCertificate  ::=  SEQUENCE  {
      extensions      [3]  Extensions OPTIONAL
                           -- If present, version MUST be v3 --  }
 
-Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
+Version ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
 
-CertificateSerialNumber  ::=  INTEGER
+CertificateSerialNumber ::=  INTEGER
 
 Validity ::= SEQUENCE {
      notBefore      Time,
@@ -593,27 +593,27 @@ Time ::= CHOICE {
      utcTime        UTCTime,
      generalTime    GeneralizedTime }
 
-UniqueIdentifier  ::=  BIT STRING
+UniqueIdentifier ::=  BIT STRING
 
-SubjectPublicKeyInfo  ::=  SEQUENCE  {
+SubjectPublicKeyInfo ::=  SEQUENCE  {
      algorithm            AlgorithmIdentifier,
      subjectPublicKey     BIT STRING  }
 
-Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
+Extensions ::=  SEQUENCE SIZE (1..MAX) OF Extension
 
-Extension  ::=  SEQUENCE  {
+Extension ::=  SEQUENCE  {
      extnID      OBJECT IDENTIFIER,
      critical    BOOLEAN DEFAULT FALSE,
      extnValue   OCTET STRING  }
 
 -- CRL structures
 
-CertificateList  ::=  SEQUENCE  {
+CertificateList ::=  SEQUENCE  {
      tbsCertList          TBSCertList,
      signatureAlgorithm   AlgorithmIdentifier,
      signature            BIT STRING  }
 
-TBSCertList  ::=  SEQUENCE  {
+TBSCertList ::=  SEQUENCE  {
      version                 Version OPTIONAL,
                                   -- if present, MUST be v2
      signature               AlgorithmIdentifier,
@@ -632,7 +632,7 @@ TBSCertList  ::=  SEQUENCE  {
 -- Version, Time, CertificateSerialNumber, and Extensions were
 -- defined earlier for use in the certificate structure
 
-AlgorithmIdentifier  ::=  SEQUENCE  {
+AlgorithmIdentifier ::=  SEQUENCE  {
      algorithm               OBJECT IDENTIFIER,
      parameters              ANY DEFINED BY algorithm OPTIONAL  }
                                 -- contains a value of the type
@@ -1358,7 +1358,7 @@ FROM PKIX1Explicit88 { iso(1) identified-organization(3)
 
 -- ISO arc for standard certificate and CRL extensions
 
-id-ce OBJECT IDENTIFIER  ::=  {joint-iso-ccitt(2) ds(5) 29}
+id-ce OBJECT IDENTIFIER ::=  {joint-iso-ccitt(2) ds(5) 29}
 
 -- authority key identifier OID and syntax
 
@@ -1534,7 +1534,7 @@ SkipCerts ::= INTEGER (0..MAX)
 
 -- CRL distribution points extension OID and syntax
 
-id-ce-cRLDistributionPoints     OBJECT IDENTIFIER  ::=  {id-ce 31}
+id-ce-cRLDistributionPoints     OBJECT IDENTIFIER ::=  {id-ce 31}
 
 CRLDistributionPoints ::= SEQUENCE SIZE (1..MAX) OF DistributionPoint
 
@@ -1596,10 +1596,10 @@ FreshestCRL ::= CRLDistributionPoints
 
 id-pe-authorityInfoAccess OBJECT IDENTIFIER ::= { id-pe 1 }
 
-AuthorityInfoAccessSyntax  ::=
+AuthorityInfoAccessSyntax ::=
         SEQUENCE SIZE (1..MAX) OF AccessDescription
 
-AccessDescription  ::=  SEQUENCE {
+AccessDescription ::=  SEQUENCE {
         accessMethod          OBJECT IDENTIFIER,
         accessLocation        GeneralName  }
 
@@ -1607,7 +1607,7 @@ AccessDescription  ::=  SEQUENCE {
 
 id-pe-subjectInfoAccess OBJECT IDENTIFIER ::= { id-pe 11 }
 
-SubjectInfoAccessSyntax  ::=
+SubjectInfoAccessSyntax ::=
         SEQUENCE SIZE (1..MAX) OF AccessDescription
 
 -- CRL number extension OID and syntax
@@ -1669,7 +1669,7 @@ holdInstruction OBJECT IDENTIFIER ::=
 
 -- ANSI X9 holdinstructions referenced by this standard
 
-id-holdinstruction-none OBJECT IDENTIFIER  ::=
+id-holdinstruction-none OBJECT IDENTIFIER ::=
                 {holdInstruction 1} -- deprecated
 
 id-holdinstruction-callissuer OBJECT IDENTIFIER ::=
@@ -1978,7 +1978,7 @@ END
 
    MessageDigest ::= OCTET STRING
 
-   SigningTime  ::= CMSTime
+   SigningTime ::= CMSTime
 
    CMSTime ::= CHOICE {
      utcTime UTCTime,
@@ -2159,7 +2159,7 @@ Holder ::= SEQUENCE {
      -- holder, for example, an executable
  }
 
-ObjectDigestInfo    ::= SEQUENCE {
+ObjectDigestInfo ::= SEQUENCE {
  digestedObjectType  ENUMERATED {
 	publicKey(0),
 	publicKeyCert  (1),
@@ -2188,26 +2188,26 @@ V2Form ::= SEQUENCE {
     -- NOT be present in this profile
  }
 
-IssuerSerial  ::=  SEQUENCE {
+IssuerSerial ::=  SEQUENCE {
  issuer   GeneralNames,
  serial   CertificateSerialNumber,
  issuerUID UniqueIdentifier OPTIONAL
  }
 
-AttCertValidityPeriod  ::= SEQUENCE {
+AttCertValidityPeriod ::= SEQUENCE {
  notBeforeTime  GeneralizedTime,
  notAfterTime   GeneralizedTime
  }
 
 Targets ::= SEQUENCE OF Target
 
-Target  ::= CHOICE {
+Target ::= CHOICE {
  targetName     [0] GeneralName,
  targetGroup    [1] GeneralName,
  targetCert     [2] TargetCert
  }
 
-TargetCert  ::= SEQUENCE {
+TargetCert ::= SEQUENCE {
  targetCertificate  IssuerSerial,
  targetName   GeneralName OPTIONAL,
  certDigestInfo     ObjectDigestInfo OPTIONAL
@@ -2233,13 +2233,13 @@ RoleSyntax ::= SEQUENCE {
  roleName [1] GeneralName
  }
 
-Clearance  ::=  SEQUENCE {
+Clearance ::=  SEQUENCE {
  policyId [0] OBJECT IDENTIFIER,
  classList[1] ClassList DEFAULT {unclassified},
  securityCategories [2] SET OF SecurityCategory  OPTIONAL
  }
 
-ClassList  ::=  BIT STRING {
+ClassList ::=  BIT STRING {
  unmarked (0),
  unclassified   (1),
  restricted     (2),
@@ -2726,7 +2726,7 @@ OptionalValidity ::= SEQUENCE {
     notBefore  [0] Time OPTIONAL,
     notAfter   [1] Time OPTIONAL } --at least one MUST be present
 
-Controls  ::= SEQUENCE SIZE(1..MAX) OF AttributeTypeAndValue
+Controls ::= SEQUENCE SIZE(1..MAX) OF AttributeTypeAndValue
 
 ProofOfPossession ::= CHOICE {
     raVerified        [0] NULL,
@@ -3140,22 +3140,22 @@ IMPORTS
                   dod(6) internet(1) security(5) mechanisms(5) pkix(7)
                   id-mod(0) id-pkix1-explicit(18)};
 
-OCSPRequest     ::=     SEQUENCE {
+OCSPRequest ::=     SEQUENCE {
     tbsRequest                  TBSRequest,
     optionalSignature   [0]     EXPLICIT OCSP-Signature OPTIONAL }
 
-TBSRequest      ::=     SEQUENCE {
+TBSRequest ::=     SEQUENCE {
     version             [0] EXPLICIT OCSP-Version DEFAULT v1,
     requestorName       [1] EXPLICIT GeneralName OPTIONAL,
     requestList             SEQUENCE OF Request,
     requestExtensions   [2] EXPLICIT Extensions OPTIONAL }
 
-OCSP-Signature       ::=     SEQUENCE {
+OCSP-Signature ::=     SEQUENCE {
     signatureAlgorithm   AlgorithmIdentifier,
     signature            BIT STRING,
     certs                [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
 
-OCSP-Version  ::=  INTEGER  {  v1(0) }
+OCSP-Version ::=  INTEGER  {  v1(0) }
 
 Request ::=     SEQUENCE {
     reqCert                    CertID,
@@ -3185,7 +3185,7 @@ ResponseBytes ::=       SEQUENCE {
     responseType   OBJECT IDENTIFIER,
     response       OCTET STRING }
 
-BasicOCSPResponse       ::= SEQUENCE {
+BasicOCSPResponse ::= SEQUENCE {
    tbsResponseData      ResponseData,
    signatureAlgorithm   AlgorithmIdentifier,
    signature            BIT STRING,
