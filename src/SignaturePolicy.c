@@ -80,7 +80,7 @@ asn_TYPE_descriptor_t asn_DEF_SignaturePolicy = {
 };
 
 SignaturePolicy_t*
-DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode) {
+DecodeSignaturePolicy(const void *buffer, size_t buf_size) {
 	SignaturePolicy_t *sigpol = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
 	rval = asn_DEF_SignaturePolicy.ber_decoder(0,
@@ -88,24 +88,13 @@ DecodeSignaturePolicy(const void *buffer, size_t buf_size, int *retcode) {
 		(void **)&sigpol,
 		buffer, buf_size,
 		0);
-	if (rval.code == RC_OK) {
-	
-		/*********** Check ASN.1 constraints */
-		char errbuf[128];
-		size_t errlen = sizeof(errbuf);
-		if (asn_check_constraints(&asn_DEF_SignaturePolicy, sigpol, errbuf, &errlen)) {
-			*retcode = RC_CHECKFAIL;
-			return sigpol;
-		}
-		/************/
 
-		*retcode = RC_OK;
+	if (rval.code == RC_OK) {
 		return sigpol; /* Decoding succeeded */
 	}
 	else {
 		/* Free partially decoded rect */
 		SignaturePolicy_free(sigpol);
-		*retcode = RC_FAIL;
 		return 0;
 	}
 }

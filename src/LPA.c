@@ -98,7 +98,7 @@ asn_TYPE_descriptor_t asn_DEF_LPA = {
 };
 
 LPA_t *
-DecodeLPA(const void *buffer, size_t buf_size, int *retcode) {
+DecodeLPA(const void *buffer, size_t buf_size) {
 	LPA_t *polist = 0; /* Note this 0! */
 	asn_dec_rval_t rval;
 	rval = asn_DEF_LPA.ber_decoder(0,
@@ -108,21 +108,11 @@ DecodeLPA(const void *buffer, size_t buf_size, int *retcode) {
 		0);
 
 	if (rval.code == RC_OK) {
-		/* Check ASN.1 constraints */
-		char errbuf[128];
-		size_t errlen = sizeof(errbuf);
-		if (asn_check_constraints(&asn_DEF_LPA, polist, errbuf, &errlen)) {
-			*retcode = RC_CHECKFAIL;
-			return polist;
-		}
-
-		*retcode = RC_OK;
 		return polist; /* Decoding succeeded */
 	}
 	else {
 		/* Free partially decoded rect */
 		LPA_free(polist);
-		*retcode = RC_FAIL;
 		return 0;
 	}
 }
@@ -132,5 +122,5 @@ void LPA_free(LPA_t *lpa) {
 		asn_DEF_LPA.free_struct(&asn_DEF_LPA, lpa, 0);
 	}
 
-	&lpa == NULL;
+	(void *)lpa = NULL;
 }

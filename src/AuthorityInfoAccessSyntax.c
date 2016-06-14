@@ -63,7 +63,6 @@ DecodeAIA(const void *buf, size_t size) {
 		0);
 
 	if (rval.code == RC_OK) {
-		/* Check ASN.1 constraints */
 		return aia; /* Decoding succeeded */
 	}
 	else {

@@ -35,7 +35,7 @@ typedef struct LPA {
 extern asn_TYPE_descriptor_t asn_DEF_LPA;
 
 /* Decoder */
-LPA_t* DecodeLPA(const void *buffer, size_t buf_size, int *retcode);
+LPA_t* DecodeLPA(const void *buffer, size_t buf_size);
 
 /* Freeing the structure */
 void LPA_free(LPA_t *lpa);
