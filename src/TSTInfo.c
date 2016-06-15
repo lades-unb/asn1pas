@@ -149,3 +149,30 @@ asn_TYPE_descriptor_t asn_DEF_TSTInfo = {
 	&asn_SPC_TSTInfo_specs_1	/* Additional specs */
 };
 
+TSTInfo_t*
+DecodeTSTInfo(const void *buf, size_t size) {
+	TSTInfo_t *tst = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_TSTInfo.ber_decoder(0,
+		&asn_DEF_TSTInfo,
+		(void **)&tst,
+		buf, size,
+		0);
+
+	if (rval.code == RC_OK) {
+		return tst; /* Decoding succeeded */
+	}
+	else {
+		/* Free partially decoded rect */
+		TSTInfo_free(tst);
+		return 0;
+	}
+}
+
+void
+TSTInfo_free(TSTInfo_t *tst) {
+	if (tst) {
+		asn_DEF_TSTInfo.free_struct(
+			&asn_DEF_TSTInfo, tst, 0);
+	}
+}

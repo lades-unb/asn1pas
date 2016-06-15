@@ -53,6 +53,12 @@ typedef struct TSTInfo {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_TSTInfo;
 
+/* Decoder */
+TSTInfo_t *DecodeTSTInfo(const void *buf, size_t size);
+
+/* Freeing structure */
+void TSTInfo_free(TSTInfo_t *tst);
+
 #ifdef __cplusplus
 }
 #endif
