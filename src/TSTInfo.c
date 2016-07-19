@@ -159,14 +159,7 @@ DecodeTSTInfo(const void *buf, size_t size) {
 		buf, size,
 		0);
 
-	if (rval.code == RC_OK) {
-		return tst; /* Decoding succeeded */
-	}
-	else {
-		/* Free partially decoded rect */
-		TSTInfo_free(tst);
-		return 0;
-	}
+	return tst; /* Decoding succeeded */
 }
 
 void

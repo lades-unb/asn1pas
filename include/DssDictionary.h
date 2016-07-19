@@ -41,6 +41,12 @@ typedef struct DssDictionary {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_DssDictionary;
 
+/* Decoder */
+DssDictionary_t *DecodeDssDictionary(const void *buf, size_t size);
+
+/* Freeing structure */
+void DssDictionary_free(DssDictionary_t *dss);
+
 #ifdef __cplusplus
 }
 #endif

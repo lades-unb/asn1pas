@@ -113,3 +113,23 @@ asn_TYPE_descriptor_t asn_DEF_DssDictionary = {
 	&asn_SPC_DssDictionary_specs_1	/* Additional specs */
 };
 
+DssDictionary_t*
+DecodeDssDictionary(const void *buf, size_t size) {
+	DssDictionary_t *dss = 0; /* Note this 0! */
+	asn_dec_rval_t rval;
+	rval = asn_DEF_DssDictionary.ber_decoder(0,
+		&asn_DEF_DssDictionary,
+		(void **)&dss,
+		buf, size,
+		0);
+
+	return dss;
+}
+
+void
+DssDictionary_free(DssDictionary_t *dss) {
+	if (dss) {
+		asn_DEF_DssDictionary.free_struct(
+			&asn_DEF_DssDictionary, dss, 0);
+	}
+}
