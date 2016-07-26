@@ -1214,11 +1214,7 @@ br-ext-dss OBJECT IDENTIFIER ::= {joint-iso-itu-t(2) country(16) br(76) icp-bras
 
 DssDictionary ::= SEQUENCE {
     mandatedEntries SEQUENCE OF PdfEntry,
-    vriDictionary VriDictionary OPTIONAL
-}
-
-VriDictionary ::= SEQUENCE {
-    mandatedEntries SEQUENCE OF PdfEntry
+    vriMandatedEntries SEQUENCE OF PdfEntry OPTIONAL
 }
 
 br-ext-mandatedDocTSEntries OBJECT IDENTIFIER ::= {joint-iso-itu-t(2) country(16) br(76) 

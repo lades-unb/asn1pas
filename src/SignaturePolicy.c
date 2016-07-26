@@ -99,7 +99,7 @@ DecodeSignaturePolicy(const void *buffer, size_t buf_size) {
 	}
 }
 
-void SignaturePolicy_free(SignaturePolicy_t * sigpol) {
+void SignaturePolicy_free(SignaturePolicy_t *sigpol) {
 	if (sigpol) {
 		asn_DEF_SignaturePolicy.free_struct(&asn_DEF_SignaturePolicy, sigpol, 0);
 	}
