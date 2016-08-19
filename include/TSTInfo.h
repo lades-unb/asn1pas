@@ -12,7 +12,7 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include <NativeInteger.h>
+#include <INTEGER.h>
 #include "TSAPolicyId.h"
 #include "MessageImprint.h"
 #include <GeneralizedTime.h>
@@ -38,11 +38,11 @@ typedef struct TSTInfo {
 	long	 version;
 	TSAPolicyId_t	 policy;
 	MessageImprint_t	 messageImprint;
-	long	 serialNumber;
+	INTEGER_t	 serialNumber;
 	GeneralizedTime_t	 genTime;
 	struct Accuracy	*accuracy	/* OPTIONAL */;
 	BOOLEAN_t	*ordering	/* DEFAULT FALSE */;
-	long	*nonce	/* OPTIONAL */;
+	INTEGER_t	*nonce	/* OPTIONAL */;
 	struct GeneralName	*tsa	/* OPTIONAL */;
 	struct Extensions	*extensions	/* OPTIONAL */;
 	

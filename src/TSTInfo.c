@@ -40,7 +40,7 @@ static asn_TYPE_member_t asn_MBR_TSTInfo_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct TSTInfo, serialNumber),
 		(ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		0,
-		&asn_DEF_NativeInteger,
+		&asn_DEF_INTEGER,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
 		0,
@@ -76,7 +76,7 @@ static asn_TYPE_member_t asn_MBR_TSTInfo_1[] = {
 	{ ATF_POINTER, 3, offsetof(struct TSTInfo, nonce),
 		(ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		0,
-		&asn_DEF_NativeInteger,
+		&asn_DEF_INTEGER,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
 		0,
@@ -158,6 +158,11 @@ DecodeTSTInfo(const void *buf, size_t size) {
 		(void **)&tst,
 		buf, size,
 		0);
+
+	if (rval.code != RC_OK) {
+		TSTInfo_free(tst);
+		return NULL;
+	}
 
 	return tst; /* Decoding succeeded */
 }

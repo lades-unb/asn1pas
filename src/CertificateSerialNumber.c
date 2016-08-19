@@ -13,7 +13,7 @@ int
 CertificateSerialNumber_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
 	/* Replace with underlying type checker */
-	td->check_constraints = asn_DEF_NativeInteger.check_constraints;
+	td->check_constraints = asn_DEF_INTEGER.check_constraints;
 	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
@@ -23,19 +23,19 @@ CertificateSerialNumber_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
  */
 static void
 CertificateSerialNumber_1_inherit_TYPE_descriptor(asn_TYPE_descriptor_t *td) {
-	td->free_struct    = asn_DEF_NativeInteger.free_struct;
-	td->print_struct   = asn_DEF_NativeInteger.print_struct;
-	td->ber_decoder    = asn_DEF_NativeInteger.ber_decoder;
-	td->der_encoder    = asn_DEF_NativeInteger.der_encoder;
-	td->xer_decoder    = asn_DEF_NativeInteger.xer_decoder;
-	td->xer_encoder    = asn_DEF_NativeInteger.xer_encoder;
-	td->uper_decoder   = asn_DEF_NativeInteger.uper_decoder;
-	td->uper_encoder   = asn_DEF_NativeInteger.uper_encoder;
+	td->free_struct    = asn_DEF_INTEGER.free_struct;
+	td->print_struct   = asn_DEF_INTEGER.print_struct;
+	td->ber_decoder    = asn_DEF_INTEGER.ber_decoder;
+	td->der_encoder    = asn_DEF_INTEGER.der_encoder;
+	td->xer_decoder    = asn_DEF_INTEGER.xer_decoder;
+	td->xer_encoder    = asn_DEF_INTEGER.xer_encoder;
+	td->uper_decoder   = asn_DEF_INTEGER.uper_decoder;
+	td->uper_encoder   = asn_DEF_INTEGER.uper_encoder;
 	if(!td->per_constraints)
-		td->per_constraints = asn_DEF_NativeInteger.per_constraints;
-	td->elements       = asn_DEF_NativeInteger.elements;
-	td->elements_count = asn_DEF_NativeInteger.elements_count;
-	td->specifics      = asn_DEF_NativeInteger.specifics;
+		td->per_constraints = asn_DEF_INTEGER.per_constraints;
+	td->elements       = asn_DEF_INTEGER.elements;
+	td->elements_count = asn_DEF_INTEGER.elements_count;
+	td->specifics      = asn_DEF_INTEGER.specifics;
 }
 
 void
