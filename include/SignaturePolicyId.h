@@ -29,7 +29,7 @@ struct SigPolicyQualifierInfo;
 typedef struct SignaturePolicyId {
 	SigPolicyId_t	 sigPolicyIdentifier;
 	SigPolicyHash_t	 sigPolicyHash;
-	struct sigPolicyQualifiers {
+	struct sigPolicyQualifiers_t {
 		A_SEQUENCE_OF(struct SigPolicyQualifierInfo) list;
 		
 		/* Context for parsing across buffer boundaries */
