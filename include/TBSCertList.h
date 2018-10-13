@@ -29,6 +29,15 @@ extern "C" {
 struct Time;
 struct Extensions;
 
+typedef struct Member {
+	CertificateSerialNumber_t	 userCertificate;
+	Time_t	 revocationDate;
+	struct Extensions	*crlEntryExtensions	/* OPTIONAL */;
+
+	/* Context for parsing across buffer boundaries */
+	asn_struct_ctx_t _asn_ctx;
+} Member_t;
+
 /* TBSCertList */
 typedef struct TBSCertList {
 	Version_t	*version	/* OPTIONAL */;
@@ -36,21 +45,14 @@ typedef struct TBSCertList {
 	Name_t	 issuer;
 	Time_t	 thisUpdate;
 	struct Time	*nextUpdate	/* OPTIONAL */;
-	struct revokedCertificates {
-		A_SEQUENCE_OF(struct Member {
-			CertificateSerialNumber_t	 userCertificate;
-			Time_t	 revocationDate;
-			struct Extensions	*crlEntryExtensions	/* OPTIONAL */;
-			
-			/* Context for parsing across buffer boundaries */
-			asn_struct_ctx_t _asn_ctx;
-		} ) list;
-		
+	struct revokedCertificates_t {
+		A_SEQUENCE_OF(struct Member_t) list;
+
 		/* Context for parsing across buffer boundaries */
 		asn_struct_ctx_t _asn_ctx;
 	} *revokedCertificates;
 	struct Extensions	*crlExtensions	/* OPTIONAL */;
-	
+
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
 } TBSCertList_t;

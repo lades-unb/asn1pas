@@ -96,8 +96,8 @@ static ber_tlv_tag_t asn_DEF_revokedCertificates_tags_7[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_SET_OF_specifics_t asn_SPC_revokedCertificates_specs_7 = {
-	sizeof(struct revokedCertificates),
-	offsetof(struct revokedCertificates, _asn_ctx),
+	sizeof(struct revokedCertificates_t),
+	offsetof(struct revokedCertificates_t, _asn_ctx),
 	0,	/* XER encoding is XMLDelimitedItemList */
 };
 static /* Use -fall-defs-global to expose */
