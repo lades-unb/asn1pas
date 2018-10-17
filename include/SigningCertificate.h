@@ -24,12 +24,8 @@ extern "C" {
 struct ESSCertID;
 struct PolicyInformation;
 
-typedef OBJECT_IDENTIFIER_t signingCertificateV2Id_t;
-
 /* SigningCertificate */
 typedef struct SigningCertificate {
-	
-	signingCertificateV2Id_t sigPolicyIdentifier;
 	struct certs {
 		A_SEQUENCE_OF(struct ESSCertID) list;
 		
