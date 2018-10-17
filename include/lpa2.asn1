@@ -2931,7 +2931,7 @@ FROM PKIX1Implicit88 {iso(1)
     identified-organization(3) dod(6) internet(1) security(5)
     mechanisms(5) pkix(7)id-mod(0) id-pkix1-implicit(19)}
 
-    CertificateSerialNumber, ub-integer-options
+    AlgorithmIdentifier, CertificateSerialNumber, ub-integer-options
 FROM PKIX1Explicit88 { iso(1) identified-organization(3)
             dod(6) internet(1) security(5) mechanisms(5) pkix(7)
             id-mod(0) id-pkix1-explicit(18) };
@@ -3100,6 +3100,26 @@ SigningCertificate ::=  SEQUENCE {
 id-aa-signingCertificate OBJECT IDENTIFIER ::= { iso(1)
     member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs9(9)
     smime(16) id-aa(2) 12 }
+
+SigningCertificateV2 ::=  SEQUENCE {
+    certs        SEQUENCE OF ESSCertIDv2,
+    policies     SEQUENCE OF PolicyInformation OPTIONAL
+}
+
+id-aa-signingCertificateV2 OBJECT IDENTIFIER ::= { iso(1)
+    member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs9(9)
+    smime(16) id-aa(2) 47 }
+
+id-sha256  OBJECT IDENTIFIER  ::=  { joint-iso-itu-t(2)
+    country(16) us(840) organization(1) gov(101)
+    csor(3) nistalgorithm(4) hashalgs(2) 1 }
+
+ESSCertIDv2 ::= SEQUENCE {
+     hashAlgorithm           AlgorithmIdentifier
+            DEFAULT {algorithm id-sha256},
+     certHash                Hash,
+     issuerSerial            IssuerSerial OPTIONAL
+}
 
 ESSCertID ::=  SEQUENCE {
      certHash                 Hash,
