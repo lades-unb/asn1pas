@@ -23,9 +23,12 @@ extern "C" {
 #endif
 
 /* Dependencies */
-typedef enum version {
-	version_v1	= 1
-} e_version;
+
+#ifdef e_version
+	typedef extern enum version {
+		version_v1 = 1
+	} e_version;
+#endif
 
 /* Forward declarations */
 struct Extensions;
