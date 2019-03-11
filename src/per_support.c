@@ -318,14 +318,14 @@ per_put_few_bits(asn_per_outp_t *po, uint32_t bits, int obits) {
 
 	if(off <= 8)	/* Completely within 1 byte */
 		bits <<= (8 - off),
-		buf[0] = (buf[0] & omsk) | bits;
+		buf[0] = (buf[0] & (uint8_t) omsk) | bits;
 	else if(off <= 16)
 		bits <<= (16 - off),
-		buf[0] = (buf[0] & omsk) | (bits >> 8),
+		buf[0] = (buf[0] & (uint8_t)omsk) | (bits >> 8),
 		buf[1] = bits;
 	else if(off <= 24)
 		bits <<= (24 - off),
-		buf[0] = (buf[0] & omsk) | (bits >> 16),
+		buf[0] = (buf[0] & (uint8_t)omsk) | (bits >> 16),
 		buf[1] = bits >> 8,
 		buf[2] = bits;
 	else if(off <= 31)

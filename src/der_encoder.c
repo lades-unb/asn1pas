@@ -116,7 +116,7 @@ der_write_tags(asn_TYPE_descriptor_t *sd,
 		for(i = 1; i < tags_count; i++)
 			tags[i] = sd->tags[i + stag_offset];
 	} else {
-		tags = sd->tags;
+		tags = (ber_tlv_tag_t *) sd->tags;
 		tags_count = sd->tags_count;
 	}
 

@@ -108,9 +108,9 @@ typedef struct asn_TYPE_descriptor_s {
 	 * Tags that are expected to occur.
 	 */
 	asn_outmost_tag_f  *outmost_tag;	/* <optional, internal> */
-	ber_tlv_tag_t *tags;	/* Effective tags sequence for this type */
+	const ber_tlv_tag_t *tags;	/* Effective tags sequence for this type */
 	int tags_count;		/* Number of tags which are expected */
-	ber_tlv_tag_t *all_tags;/* Every tag for BER/containment */
+	const ber_tlv_tag_t *all_tags;/* Every tag for BER/containment */
 	int all_tags_count;	/* Number of tags */
 
 	asn_per_constraints_t *per_constraints;	/* PER compiled constraints */

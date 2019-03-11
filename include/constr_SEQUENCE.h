@@ -21,7 +21,7 @@ typedef struct asn_SEQUENCE_specifics_s {
 	/*
 	 * Tags to members mapping table (sorted).
 	 */
-	asn_TYPE_tag2member_t *tag2el;
+	const asn_TYPE_tag2member_t *tag2el;
 	int tag2el_count;
 
 	/*
