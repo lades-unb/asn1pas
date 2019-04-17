@@ -23,22 +23,16 @@ extern "C" {
 
 /* LPA */
 typedef struct LPA {
-	LpaVersion_t	 version	/* DEFAULT 0 */;
+	LpaVersion_t	 *version	/* OPTIONAL */;
 	PolicyInfos_t	 policyInfos;
 	GeneralizedTime_t	 nextUpdate;
-	
+
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
 } LPA_t;
 
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_LPA;
-
-/* Decoder */
-LPA_t* DecodeLPA(const void *buffer, size_t buf_size);
-
-/* Freeing the structure */
-void LPA_free(LPA_t *lpa);
 
 #ifdef __cplusplus
 }

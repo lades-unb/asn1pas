@@ -28,7 +28,7 @@ static int asn_DFL_2_set_0(int set_value, void **sptr) {
 	}
 }
 static asn_TYPE_member_t asn_MBR_LPA_1[] = {
-	{ ATF_NOFLAGS, 1, offsetof(struct LPA, version),
+	{ ATF_POINTER, 1, offsetof(struct LPA, version),
 		(ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		0,
 		&asn_DEF_LpaVersion,
@@ -96,31 +96,3 @@ asn_TYPE_descriptor_t asn_DEF_LPA = {
 	3,	/* Elements count */
 	&asn_SPC_LPA_specs_1	/* Additional specs */
 };
-
-LPA_t *
-DecodeLPA(const void *buffer, size_t buf_size) {
-	LPA_t *polist = 0; /* Note this 0! */
-	asn_dec_rval_t rval;
-	rval = asn_DEF_LPA.ber_decoder(0,
-		&asn_DEF_LPA,
-		(void **)&polist,
-		buffer, buf_size,
-		0);
-
-	if (rval.code == RC_OK) {
-		return polist; /* Decoding succeeded */
-	}
-	else {
-		/* Free partially decoded rect */
-		LPA_free(polist);
-		return 0;
-	}
-}
-
-void LPA_free(LPA_t *lpa) {
-	if (lpa) {
-		asn_DEF_LPA.free_struct(&asn_DEF_LPA, lpa, 0);
-	}
-
-	(void *)lpa = NULL;
-}

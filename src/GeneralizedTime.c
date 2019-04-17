@@ -604,7 +604,8 @@ asn_time2GT_frac(GeneralizedTime_t *opt_gt, const struct tm *tm, int frac_value,
 	buf = (char *)MALLOC(buf_size);
 	if(!buf) return 0;
 
-	gmtoff = GMTOFF(*tm);
+	gmtoff = 0;
+	//gmtoff = GMTOFF(*tm);
 
 	if(force_gmt && gmtoff) {
 		tm_s = *tm;
